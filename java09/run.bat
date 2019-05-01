@@ -1,0 +1,4 @@
+@ECHO OFF
+java Ex01
+
+PAUSE
