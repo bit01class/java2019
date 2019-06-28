@@ -22,7 +22,7 @@ public class WebServer {
 		OutputStream os=null;
 		DataOutputStream dos=null;
 		InputStream is=null;
-		byte[] buf=new byte[256];
+		byte[] buf=new byte[1024];
 		InputStreamReader isr=null;
 		BufferedReader br=null;
 		
@@ -53,10 +53,13 @@ public class WebServer {
 			int su=0;
 			
 			os.write("HTTP/1.1 200 OK \r\n".getBytes());
+			os.write("Content-type: text/html \r\n".getBytes());
 			os.write("\r\n".getBytes());
+			
 			while((su=is.read(buf))!=-1){
 				os.write(buf,0,su);
 			}
+			
 			os.flush();
 			System.out.println("메시지 전달 완료");
 			os.close();
